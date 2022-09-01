@@ -1,5 +1,6 @@
 .app-box {
   margin: 0 20px;
+  min-height: 105vh;
 }
 .books {
   display: flex;
