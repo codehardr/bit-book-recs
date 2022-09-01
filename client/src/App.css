@@ -1,0 +1,61 @@
+.app-box {
+  margin: 0 20px;
+}
+.books {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* align-content: flex-start; */
+  gap: 30px;
+  margin-bottom: 20px;
+}
+.book {
+  width: 330px;
+}
+.book h2 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+.book .cover img {
+  width: 100%;
+}
+
+/* MESSAGES */
+.msg {
+  color: white;
+  font-size: 0.85em;
+  text-transform: uppercase;
+  padding: 5px 10px;
+}
+.msg-green {
+  background-color: seagreen;
+}
+.msg-red {
+  background-color: tomato;
+}
+
+/* BUTTONS */
+.btns {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+.btn {
+  border: none;
+  padding: 5px 10px;
+  color: white;
+  background-color: grey;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 0.85em;
+  display: inline-block;
+}
+.btn:active {
+  background-color: black;
+}
+.btn-del {
+  background-color: tomato;
+}
+.btn-more {
+  background-color: seagreen;
+}
