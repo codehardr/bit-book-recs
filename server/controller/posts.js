@@ -4,8 +4,17 @@ import db from '../database/connect.js'
 const router = express.Router()
 
 router.get('/', async (req, res) => {
-  const posts = await db.Posts.findAll()
-  res.json(posts)
+  try {
+    const posts = await db.Posts.findAll()
+    res.json(posts)
+  } catch {
+    // pirmas variantas grąžinti tik statusą
+    // res.status(500).end()
+    // antras variantas grąžinti tik statusą
+    // res.sendStatus(500)
+
+    res.status(500).json({ message: 'Server error' })
+  }
 })
 
 router.get('/:id', async (req, res) => {

@@ -1,6 +1,8 @@
 import { Sequelize } from 'sequelize'
 import mysql from 'mysql2/promise'
+
 import Posts from '../model/posts.js'
+import Users from '../model/users.js'
 
 const database = {}
 const credentials = {
@@ -20,8 +22,11 @@ try {
   const sequelize = new Sequelize(credentials.database, credentials.user, credentials.password, {
     dialect: 'mysql',
   })
+
   database.Posts = Posts(sequelize)
-  await sequelize.sync({ alter: true })
+  database.Users = Users(sequelize)
+
+  await sequelize.sync({ alter: false })
 } catch {
   console.log('Database connection failed')
 }

@@ -78,6 +78,7 @@ header ul li a span.active {
   color: white;
   width: fit-content;
   padding: 5px 20px;
+  cursor: pointer;
 }
 
 /* SINGLE BOOK */

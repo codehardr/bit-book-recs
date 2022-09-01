@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
 
+a {
+  text-decoration: none;
+  color: black;
+}
 .app-box {
   margin: 20px;
   min-height: 105vh;
@@ -49,6 +53,10 @@
   justify-content: space-between;
   margin: 5px;
 }
+.btns-group-l {
+  display: flex;
+  gap: 5px;
+}
 .btn {
   border: none;
   padding: 5px 10px;
@@ -68,4 +76,7 @@
 }
 .btn-more {
   background-color: seagreen;
+}
+.btn-edit {
+  background-color: royalblue;
 }

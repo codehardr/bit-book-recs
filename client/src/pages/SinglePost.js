@@ -1,14 +1,22 @@
 import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 
 const SinglePost = () => {
-  const [post, setPost] = useState([])
   const { id } = useParams()
+  const [post, setPost] = useState([])
+  const navigate = useNavigate()
   useEffect(() => {
     fetch('http://localhost:3000/' + id)
       .then(resp => resp.json())
-      .then(resp => setPost(resp))
-  }, [])
+      .then(resp => {
+        if (!resp) return navigate('/')
+        setPost(resp)
+      })
+      .catch(error => {
+        console.log(error)
+        navigate('/')
+      })
+  })
   return (
     <div className="single-book">
       <h1>{post.title}</h1>

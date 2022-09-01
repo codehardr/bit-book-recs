@@ -8,14 +8,16 @@ const App = () => {
     message: '',
     status: '',
   })
+  const [refresh, setRefresh] = useState(false)
 
   useEffect(() => {
     fetch('http://localhost:3000')
       .then(resp => resp.json())
       .then(resp => {
+        if (resp.message) return setMsg({ message: resp.message, status: 'red' })
         setPosts(resp)
       })
-  }, [msg])
+  }, [refresh])
 
   const handleDelete = id => {
     if (isNaN(id)) return
@@ -23,10 +25,13 @@ const App = () => {
       .then(resp => resp.json())
       .then(resp => {
         setMsg({ message: resp.message, status: 'green' })
+        setRefresh(!refresh)
+        window.scrollTo(0, 0)
       })
       .catch(error => {
         console.log(error)
         setMsg({ message: 'Server error', status: 'red' })
+        window.scrollTo(0, 0)
       })
       .finally(() => setTimeout(() => setMsg({ message: '', status: '' }), 3000))
   }
@@ -35,19 +40,23 @@ const App = () => {
     <div className="app-box">
       {msg.message && <div className={'msg msg-' + msg.status}>{msg.message}</div>}
       <div className="books">
-        {posts &&
+        {posts.length > 0 &&
           posts.map(book => {
             return (
               <div key={book.id} className="book">
                 <h2>{book.title}</h2>
-                <div className="cover">
+                <Link to={'/post/' + book.id} className="cover">
                   <img src={book.image} alt={book.title} />
-                </div>
-                {/* <p>{book.content}</p> */}
+                </Link>
                 <div className="btns">
-                  <button className="btn btn-del" onClick={() => handleDelete(book.id)}>
-                    Delete
-                  </button>
+                  <div className="btns-group-l">
+                    <button className="btn btn-del" onClick={() => handleDelete(book.id)}>
+                      Delete
+                    </button>
+                    <Link to={'/edit/' + book.id} className="btn btn-edit">
+                      Edit
+                    </Link>
+                  </div>
                   <Link to={'/post/' + book.id} className="btn btn-more">
                     Read More
                   </Link>
