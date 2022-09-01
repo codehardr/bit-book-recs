@@ -1,24 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+
 .app-box {
-  margin: 0 20px;
+  margin: 20px;
   min-height: 105vh;
 }
 .books {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  /* align-content: flex-start; */
   gap: 30px;
-  margin-bottom: 20px;
 }
 .book {
   width: 330px;
+  height: fit-content;
+  filter: grayscale(100%) opacity(90%);
+  transition: filter 240ms;
+}
+.book:hover {
+  filter: grayscale(0%) opacity(100%);
 }
 .book h2 {
   text-align: center;
-  margin-bottom: 10px;
+  margin: 10px 0;
+  font-family: 'Quicksand', sans-serif;
 }
 .book .cover img {
   width: 100%;
+  border-radius: 10px;
 }
 
 /* MESSAGES */
@@ -39,7 +47,7 @@
 .btns {
   display: flex;
   justify-content: space-between;
-  margin-top: 5px;
+  margin: 5px;
 }
 .btn {
   border: none;
@@ -50,6 +58,7 @@
   text-decoration: none;
   font-size: 0.85em;
   display: inline-block;
+  border-radius: 10px;
 }
 .btn:active {
   background-color: black;
