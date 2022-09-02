@@ -16,7 +16,7 @@ const SinglePost = () => {
         console.log(error)
         navigate('/')
       })
-  })
+  }, [])
   return (
     <div className="single-book">
       <h1>{post.title}</h1>

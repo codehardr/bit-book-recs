@@ -31,7 +31,7 @@ const EditPost = () => {
         console.log(error)
         navigate('/')
       })
-  })
+  }, [])
   return (
     <div className="new-book">
       <h1>Edit Book</h1>
